@@ -33,7 +33,11 @@ class LoginPage(BasePage):
         print(xpath)
         full = "("+str(xpath.replace(", ","").replace("xpath","").replace("'","").replace("\\","").replace("(","").replace(")",""))+")["+str(index)+"]"
         print(full)
-        urlval = self.browser.find_element(By.XPATH,full)
+        try:
+            urlval = self.browser.find_element(By.XPATH,full)
+        except:
+            time.sleep(5)
+            urlval = self.browser.find_element(By.XPATH,full)
         try:
             val = urlval.get_attribute("href")
         except:
@@ -71,3 +75,115 @@ class LoginPage(BasePage):
             value = val.text
         except:
             value = "o value"
+        return value
+
+
+    def getAddressFIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Address_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value   
+    
+    def getPostalCodeFIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.PostalCode_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value           
+
+    def getRegionFIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Region_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value   
+
+    def getLocalityFIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Locality_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
+
+    def getDirectionsFIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Directions_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value     
+          
+    def getWeb_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Link_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
+    def getEmail_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Email_FIELDtwo)
+            value = vals.get_attribute("href")
+        except:
+            value = "o value"
+        return value  
+    def getPhone_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Phone_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
+    def getPortable_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Portable_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
+    def getSocialMedia_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.SocialMedia_FIELD)
+            value = vals.get_attribute("href")
+        except:
+            value = "o value"
+        return value  
+
+    def getSocialMedia_FIELDtwo(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.SocialMedia_FIELDtwo)
+            value = vals.get_attribute("href")
+        except:
+            value = "o value"
+        return value  
+
+    def getSocialMedia_FIELDthree(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.SocialMedia_FIELDthree)
+            value = vals.get_attribute("href")
+        except:
+            value = "o value"
+        return value  
+    
+
+    def getAddressone_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.AddressOne_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
+
+
+    def getTeloccupation_FIELD(self):
+        try:
+            vals = self.browser.find_element(*PageLocators.Teloccupation_FIELD)
+            value = vals.text
+        except:
+            value = "o value"
+        return value  
