@@ -9,7 +9,7 @@ class PageLocators():
     Header_title = (By.XPATH,'//h1[@class="sl-card-header-title"]')
     categories_FIELD = (By.XPATH,'//div[@class="tel-categories"]/span/a')
     Name_FIELD = (By.XPATH,'//h1')
-    Teloccupation_FIELD = (By.XPATH,'(//div[@class="tel-detail-baseinfo"]/descendant::span[not(@*)])[last()]')
+    Teloccupation_FIELD = (By.XPATH,'//div[@class="tel-detail-baseinfo"]/descendant::span/following::div[@class="tel-detail-address"]/preceding-sibling::h1/following-sibling::span') #'(//div[@class="tel-detail-baseinfo"]/descendant::span[not(@*)])[last()]'
     AddressOne_FIELD = (By.XPATH,'//div[@class="tel-occupation"]')
     Address_FIELD = (By.XPATH,'//span[@class="street-address"]')
     PostalCode_FIELD = (By.XPATH,'//span[@class="postal-code"]')
