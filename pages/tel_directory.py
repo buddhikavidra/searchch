@@ -2,6 +2,7 @@ import re
 from .base_page import BasePage
 from .locators import PageLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 import time
 
 
@@ -22,8 +23,13 @@ class LoginPage(BasePage):
 
 
     def click_submit(self):
-        Phonenumber = self.browser.find_element(*PageLocators.Submit_BUTTON)
-        Phonenumber.click()
+        time.sleep(1)
+        try:
+            Phonenumber = self.browser.find_element(*PageLocators.Submit_BUTTON)
+            Phonenumber.click()
+        except:
+            Phonenumber = self.browser.find_element(*PageLocators.Submit_BUTTONtwo)
+            Phonenumber.click()          
 
     def geturl(self,index):
         scroll_distance = 5000  # Adjust the distance as needed
@@ -188,3 +194,29 @@ class LoginPage(BasePage):
         except:
             value = "o value"
         return value  
+
+    def Extendedsearch(self, Namei,Sectori,Streeti,Cityi,Cantoni,Phonenumberi):
+        Name = self.browser.find_element(*PageLocators.Name_INPUT)
+        Name.send_keys(Namei)
+        time.sleep(0.3)
+        Sector = self.browser.find_element(*PageLocators.Sector_INPUT)
+        Sector.send_keys(Sectori)
+        time.sleep(0.3)
+        Street = self.browser.find_element(*PageLocators.Street_INPUT)
+        Street.send_keys(Streeti)
+        time.sleep(0.3)
+        City = self.browser.find_element(*PageLocators.City_INPUT)
+        City.send_keys(Cityi)
+        time.sleep(0.3)
+        Canton = Select(self.browser.find_element(*PageLocators.Canton_DD))
+        Canton.select_by_value(Cantoni)
+        time.sleep(0.3)
+        Phonenumber = self.browser.find_element(*PageLocators.Phonenumber_INPUTE)
+        Phonenumber.send_keys(Phonenumberi)
+        time.sleep(2)
+    
+    def searchButton(self,searchoption):
+        if(searchoption =="True"):
+            self.browser.execute_script('document.querySelector("#tel-form-simple > div.tel-form-toggle > a > span.tel-switch-form-label").click()')
+        else:
+            self.browser.execute_script('document.querySelector("#tel-form-extended > div.tel-form-toggle > a > span.tel-switch-form-label").click()')
