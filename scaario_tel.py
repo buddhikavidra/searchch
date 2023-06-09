@@ -17,19 +17,19 @@ profile = config.get('DEFAULT','profile')
 link = config.get('DEFAULT','link')
 excelfilename = config.get('DEFAULT','excelfilename')
 excelsheetname = config.get('DEFAULT','excelsheetname')
-who_what_field = config.get('DEFAULT','bar')
-where_field = config.get('DEFAULT','zurich')
+whowhatField = config.get('DEFAULT','whoWhatField')
+whereField = config.get('DEFAULT','whereField')
 
 def test_email_login_with_correct_code(browser):
     page = LoginPage(browser, link)
     page.open()
-    page.who_what_field(who_what_field)
-    page.where_field(where_field)
+    page.who_what_field(whowhatField)
+    page.where_field(whereField)
     page.click_submit()
     page.pause(5)
     var =  page.getobjectcout()
     arr = []
-    for a in range(1,var):
+    for a in range(1,200):
         url =  page.geturl(a)
         arr.append(url)   
     print(len(arr))

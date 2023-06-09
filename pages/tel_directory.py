@@ -70,12 +70,13 @@ class LoginPage(BasePage):
         return arr
 
     def getName(self):
-        val = self.browser.find_element(*PageLocators.Name_FIELD)
         try:
+            val = self.browser.find_element(*PageLocators.Name_FIELD)
             value = val.text
+            string_without_special_chars = re.sub(r"[^a-zA-Z0-9\s]", "", value.replace("\n", ""))
         except:
-            value = "o value"
-        return value
+            string_without_special_chars = "o value"
+        return string_without_special_chars
 
 
     def getAddressFIELD(self):
